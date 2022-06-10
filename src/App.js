@@ -1,24 +1,18 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import UsersTable from "./components/UsersTable";
+import usersService from './services/users'
 
 const App = () => {
-  const [num, setNum] = useState(0)
   const [users, setUsers] = useState([])
 
   useEffect(() => {
-    axios.get('https://jsonplaceholder.typicode.com/users').then(response => {
-      setUsers(response.data)
+    usersService.getAll().then(initUsers => {
+      setUsers(initUsers)
     })
   }, [])
 
-  console.log(users)
-
   return (
-    <>
-      <h1>Yes</h1>
-      <h2>{num}</h2>
-      <button onClick={() => {setNum(num+1)}}>Increase</button>
-    </>
+      <UsersTable users={users} />
   );
 }
 
