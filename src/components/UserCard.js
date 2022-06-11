@@ -10,7 +10,10 @@ const UserCard = ({ user }) => {
         <>
         <Card>
         {details ? <UserDetail user={user} /> : <UserNotDetail user={user} />}
-        <CardActions>
+        <CardActions style={{
+            justifyContent: 'center',
+            alignItems: 'center'
+        }}>
                 <Button variant="contained" onClick={() => {setDetails(!details)}}>{details ? 'Less Details' : 'More Details'}</Button>
         </CardActions>
         </Card>
