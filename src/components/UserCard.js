@@ -1,34 +1,18 @@
-import { Card, CardHeader, Avatar, CardContent, Typography, CardActions, Button } from "@mui/material"
+import { Card, CardActions, Button } from "@mui/material"
+import { useState } from "react"
+import UserDetail from "./UserDetail"
+import UserNotDetail from "./UserNotDetail"
 
 const UserCard = ({ user }) => {
+    const [details, setDetails] = useState(false)
 
     return (
         <>
-        <Card sx={{
-            justifyContent : 'center',
-            alignItems: 'center'
-        }}>
-        <CardHeader 
-        avatar={
-            <Avatar sx={{ bgcolor: '#d6c5c7'}}>
-                {user.name[0]}
-            </Avatar>
-        }
-        />
-        <CardContent>
-            <Typography>
-                {user.id}
-            </Typography>
-            <Typography>
-                {user.name}
-            </Typography>
-                <Typography>
-                {user.email}
-                </Typography>
-            </CardContent>
-            <CardActions>
-                <Button size="small">More Details</Button>
-            </CardActions>
+        <Card>
+        {details ? <UserDetail user={user} /> : <UserNotDetail user={user} />}
+        <CardActions>
+                <Button variant="contained" onClick={() => {setDetails(!details)}}>{details ? 'Less Details' : 'More Details'}</Button>
+        </CardActions>
         </Card>
         </>
     )

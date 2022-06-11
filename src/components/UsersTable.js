@@ -1,9 +1,9 @@
-import { Grid } from "@mui/material"
+import { Box, Grid } from "@mui/material"
 import UserCard from "./UserCard"
 
 const UsersTable = ({ users }) => {
     return (
-        <>
+        <Box justifyContent='center' alignItems='center'>
             <Grid container spacing={3}>
                 {users.map(user => 
                     <Grid item xs={4} key={user.id}>
@@ -11,7 +11,7 @@ const UsersTable = ({ users }) => {
                     </Grid>    
                 )}
             </Grid>
-        </>
+        </Box>
     )
 }
 
